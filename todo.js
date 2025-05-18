@@ -3,7 +3,9 @@ const newTaskInput = document.getElementById("new-task-input");
 const taskList = document.getElementById("task-list");
 const taskCounter = document.getElementById("task-counter");
 const taskAddDeletePopup = document.getElementById("task-add-delete-popup");
-let popupTimeoutId = null;
+const popupTitle = taskAddDeletePopup.querySelector(".popup-title");
+const popupMessage = taskAddDeletePopup.querySelector(".popup-message");
+let popupTimeoutId;
 
 addTaskForm.addEventListener("submit", handleTaskAdd);
 
@@ -29,7 +31,6 @@ function handleTaskAdd(event) {
     newTaskItem.appendChild(taskTextElement);
 
     const deleteButton = document.createElement("button");
-    deleteButton.innerText = "x";
     deleteButton.type = "button";
     deleteButton.classList.add("delete-task-button");
     deleteButton.setAttribute("aria-label", `Delete task: ${taskInputText}`);
@@ -40,8 +41,8 @@ function handleTaskAdd(event) {
     newTaskInput.value = "";
 
     updateTaskCounter();
-
-    displayPopup("Task added", "Your task has been added succesfully!");
+    
+    displayPopup("Task added", "Your task has been added successfully!");
 }
 
 function handleTaskDelete(event) {
@@ -52,7 +53,7 @@ function handleTaskDelete(event) {
 
         updateTaskCounter();
 
-        displayPopup("Task deleted", "Your task has been deleted succesfully!");
+        displayPopup("Task deleted", "Your task has been deleted successfully!");
     }
 }
 
@@ -71,13 +72,10 @@ function updateTaskCounter() {
     taskCounter.innerText = `${completedTasks} of ${totalTasks} completed`;
 }
 
-function displayPopup(h3Message, paragraphMessage) {
+function displayPopup(titleText, messageText) {
 
-    const popupH3 = taskAddDeletePopup.querySelector("h3");
-    const popupParagraph = taskAddDeletePopup.querySelector("p");
-
-    popupH3.innerText = h3Message;
-    popupParagraph.innerText = paragraphMessage;
+    popupTitle.innerText = titleText;
+    popupMessage.innerText = messageText;
 
     if (popupTimeoutId) {
         clearTimeout(popupTimeoutId);
@@ -87,6 +85,5 @@ function displayPopup(h3Message, paragraphMessage) {
 
     popupTimeoutId = setTimeout(() => {
         taskAddDeletePopup.classList.add("hidden");
-        popupTimeoutId = null;
     }, 3000)
 }

@@ -4,24 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do List</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-    <div id="todo-container">
-        <h1>My To-Do List</h1>
-        <p>Stay organized and get things done</p>
+    <div class="container">
+        <h1>My Todo List</h1>
+        <p class="subtitle">Stay organized and get things done</p>
 
         <form id="add-task-form">
             <input id="new-task-input" type="text" placeholder="Add a new task...">
-            <button id="task-submit-button" type="submit">+</button>
+            <button id="add-task-button" type="submit">+</button>
         </form>
 
         <ul id="task-list"></ul>
 
-        <p id="task-counter">x of y tasks completed</p>
+        <p id="task-counter"></p>
 
         <div id="task-add-delete-popup" class="hidden">
-            <h3></h3>
-            <p></p>
+            <h3 class="popup-title"></h3>
+            <p class="popup-message"></p>
         </div>
     </div>
 
