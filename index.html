@@ -12,23 +12,19 @@
 
         <form id="add-task-form">
             <input id="new-task-input" type="text" placeholder="Add a new task...">
-            <button type="submit">+</button>
+            <button id="task-submit-button" type="submit">+</button>
         </form>
 
-        <ul id="task-list">
-            <li>
-                <input type="checkbox" id="task-sample-1">
-                task 1
-                <button type="button">x</button>
-            </li>
-        </ul>
+        <ul id="task-list"></ul>
 
         <p id="task-counter">x of y tasks completed</p>
 
         <div id="task-add-delete-popup" class="hidden">
-            <h3>Task added/deleted</h3>
-            <p>Your task has been added/deleted succesfully!</p>
+            <h3></h3>
+            <p></p>
         </div>
     </div>
+
+    <script src="todo.js"></script>
 </body>
 </html>
