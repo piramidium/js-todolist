@@ -1,7 +1,6 @@
 :root {
   --primary-color: #8245c7;
   --completed-color: #888888;
-  /*--hover-color: #f5f5f5;*/
   --hover-color: rgb(250, 245, 255);
 }
 
@@ -131,9 +130,9 @@ h1 {
 }
 
 #task-add-delete-popup {
-  /*position: fixed;
+  position: fixed;
   bottom: 20px;
-  right: 20px;*/
+  right: 20px;
   margin-top: 1rem;
   background-color: white;
   padding: 1rem 1.5rem;
