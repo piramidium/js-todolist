@@ -8,13 +8,13 @@ const popupMessage = taskAddDeletePopup.querySelector(".popup-message");
 let popupTimeoutId;
 
 addTaskForm.addEventListener("submit", handleTaskAdd);
-
 taskList.addEventListener("click", handleTaskDelete);
+taskList.addEventListener("change", handleTaskToggle);
 
 function handleTaskAdd(event) {
     event.preventDefault();
 
-    const taskInputText = newTaskInput.value;
+    const taskInputText = newTaskInput.value.trim();
     if (taskInputText === "") {
         return;
     }
@@ -23,7 +23,6 @@ function handleTaskAdd(event) {
 
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
-    checkbox.addEventListener("change", handleTaskToggle);
     newTaskItem.appendChild(checkbox);
 
     const taskTextElement = document.createElement("span");
@@ -33,7 +32,7 @@ function handleTaskAdd(event) {
     const deleteButton = document.createElement("button");
     deleteButton.type = "button";
     deleteButton.classList.add("delete-task-button");
-    deleteButton.setAttribute("aria-label", "Delete task");
+    deleteButton.setAttribute("aria-label", `Delete task: ${taskInputText}`);
     newTaskItem.appendChild(deleteButton);
 
     taskList.appendChild(newTaskItem);
@@ -58,10 +57,12 @@ function handleTaskDelete(event) {
 }
 
 function handleTaskToggle(event) {
-    const toggledTask = event.target.parentElement;
-    toggledTask.classList.toggle("completed");
+    if (event.target.type === "checkbox") { 
+        const toggledTask = event.target.parentElement;
+        toggledTask.classList.toggle("completed");
 
-    updateTaskCounter();
+        updateTaskCounter();
+    }
 }
 
 function updateTaskCounter() {
@@ -81,9 +82,9 @@ function displayPopup(titleText, messageText) {
         clearTimeout(popupTimeoutId);
     }
 
-    taskAddDeletePopup.classList.remove("hidden");
+    taskAddDeletePopup.classList.toggle("hidden", false);
 
     popupTimeoutId = setTimeout(() => {
-        taskAddDeletePopup.classList.add("hidden");
+        taskAddDeletePopup.classList.toggle("hidden", true);
     }, 3000)
 }
