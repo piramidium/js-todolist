@@ -33,6 +33,7 @@ function handleTaskAdd(event) {
     const deleteButton = document.createElement("button");
     deleteButton.type = "button";
     deleteButton.classList.add("delete-task-button");
+    deleteButton.setAttribute("aria-label", "Delete task");
     newTaskItem.appendChild(deleteButton);
 
     taskList.appendChild(newTaskItem);

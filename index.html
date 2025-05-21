@@ -9,22 +9,29 @@
 </head>
 <body>
     <div class="container">
-        <h1>My Todo List</h1>
-        <p class="subtitle">Stay organized and get things done</p>
+        <header>
+            <h1>My Todo List</h1>
+            <p class="subtitle">Stay organized and get things done</p>
+        </header>
 
-        <form id="add-task-form">
-            <input id="new-task-input" type="text" placeholder="Add a new task...">
-            <button id="add-task-button" type="submit">+</button>
-        </form>
+        <main>
+            <form id="add-task-form">
+                <input id="new-task-input" type="text" placeholder="Add a new task...">
+                <button id="add-task-button" type="submit" aria-label="Add task">+</button>
+            </form>
 
-        <ul id="task-list"></ul>
+            <ul id="task-list"></ul>
 
-        <p id="task-counter"></p>
+            <p id="task-counter"></p>
+        </main>
 
-        <div id="task-add-delete-popup" class="hidden">
-            <h3 class="popup-title"></h3>
-            <p class="popup-message"></p>
-        </div>
+        <footer>
+            <div id="task-add-delete-popup" class="hidden">
+                <h3 class="popup-title"></h3>
+                <p class="popup-message"></p>
+            </div>
+        </footer>
+        
     </div>
 
     <script src="todo.js"></script>
